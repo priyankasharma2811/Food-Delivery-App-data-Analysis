@@ -1,6 +1,6 @@
 
 
-# Query  1 For a high-level overview of the hotels, provide us the top 5 most voted hotels in the delivery category
+-- Query  1 For a high-level overview of the hotels, provide us the top 5 most voted hotels in the delivery category
 
 select name ,votes ,rating ,rank1 from (
 	SELECT name,votes,rating ,Rank () over( order by votes desc) as rank1 
@@ -11,11 +11,11 @@ where rank1<=5;
 /* 
 Output
 
-name						votes   rating 	rank
+name					votes   rating 		rank
 Udupi Ruchi Grand			5352	4.2		1
-Onesta						6470	4.6		2
-Mojo Pizza - 2X Toppings	5448	4.2		3
-Corner House Ice Cream		6385	4.3		4
+Onesta					6470	4.6		2
+Mojo Pizza - 2X Toppings		5448	4.2		3
+Corner House Ice Cream			6385	4.3		4
 Ayodhya Upachar				5913	4.3		5
 
 
@@ -33,13 +33,13 @@ Hence for a particular location called Banashankari find out the top 5 highly ra
  
  /* 
  Output 
-name						rating
-Onesta						4.6
-Corner House Ice Cream		4.3
+name					rating
+Onesta					4.6
+Corner House Ice Cream			4.3
 Ayodhya Upachar				4.3
-Mojo Pizza - 2X Toppings	4.2
+Mojo Pizza - 2X Toppings		4.2
 Udupi Ruchi Grand			4.2
-Smacznego					4.2
+Smacznego				4.2
 Frozen Bottle				4.2
 Cafe Shuffle				4.2
 Szechuan Dragon				4.2
@@ -67,8 +67,8 @@ Rating_of_cheapest_hotel	Rating_of_expensive_hotel
 
 */
 
-#Query 4 Online ordering of food has exponentially increased over time. 
-#Compare the total votes of restaurants that provide online ordering services and those who don’t provide online ordering service.
+-- Query 4 Online ordering of food has exponentially increased over time. 
+-- Compare the total votes of restaurants that provide online ordering services and those who don’t provide online ordering service.
 
 (Select sum(votes) , online_order 
 	FROM gdb041.zomatocleaned_v1 
@@ -84,6 +84,8 @@ Output
 Total votes		online order
 1412577			Yes
 852442			No
+
+
 
 Query 5 Number of votes defines how much the customers are involved with the service provided by the restaurants 
 For each Restaurant type, find out the number of restaurants, total votes, and average rating. 
@@ -102,14 +104,14 @@ order by total_votes desc;
 /*
 Output
 
-Type of Restraunt   Number  Votes   Avg_rating	
-Delivery			5955	1503467	3.2747103274559244
-Dine-out			2162	304520	3.4086956521739085
-Cafes				357		196400	3.3369747899159674
-Buffet				155		87407	3.652903225806451
-Desserts			485		84635	3.446185567010313
-Pubs and bars		16		1670	3.9374999999999996
-Drinks & nightlife	24		899		3.5625
+Type of Restraunt   	Number  Votes   Avg_rating	
+Delivery		5955	1503467	3.2747103274559244
+Dine-out		2162	304520	3.4086956521739085
+Cafes			357	196400	3.3369747899159674
+Buffet			155	87407	3.652903225806451
+Desserts		485	84635	3.446185567010313
+Pubs and bars		16	1670	3.9374999999999996
+Drinks & nightlife	24	899	3.5625
 
 
  
@@ -127,7 +129,7 @@ Query 6  What is the most liked dish of the most-voted restaurant on Zomato(as t
  
  /*
 Output
- name 		dish liked																						rating	votes
+ name 		dish liked											rating		votes																						rating	votes
  Onesta		Farmhouse Pizza, Chocolate Banana, Virgin Mojito, Pasta, Paneer Tikka, Lime Soda, Prawn Pizza	4.6		6470
  
  
@@ -147,21 +149,21 @@ where t.rnk <=15
 /*	
 Output
 
-name											rating  votes	online order			
-Addhuri Udupi Bhojana							3.7		14956	No
+name										rating  votes	online order			
+Addhuri Udupi Bhojana								3.7		14956	No
 Grand Village									3.8		14726	No
-Rosewood International Hotel - Bar & Restaurant	3.6		12121	No
-Caf-Eleven										4		9085	No
-T3H Cafe										3.9		8304	No
+Rosewood International Hotel - Bar & Restaurant					3.6		12121	No
+Caf-Eleven									4		9085	No
+T3H Cafe									3.9		8304	No
 Cafe Coffee Day									3.6		7284	No
 Hide Out Cafe									3.7		7238	No
-CAFE NOVA										3.2		7154	No
+CAFE NOVA									3.2		7154	No
 Sea Green Cafe									3.3		7064	No
-Cuppa											3.3		6998	No
+Cuppa										3.3		6998	No
 Srinathji's Cafe								3.8		6959	No
-Corner House Ice Cream							4.3		6385	No
+Corner House Ice Cream								4.3		6385	No
 Gustoes Beer House								4.1		4845	No
 The Biryani Cafe								4.1		4781	No
-1947											4		4705	No
+1947										4		4705	No
  
  */
